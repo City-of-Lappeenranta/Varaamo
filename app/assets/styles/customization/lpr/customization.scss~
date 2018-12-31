@@ -1,0 +1,328 @@
+@import "./variables";
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
+
+.lpr-customizations {
+
+  // Typography
+  // ---------- 
+  background-color : #f0f0f0;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $heading-font-family;
+    font-weight: $font-weight-bold;
+  }
+
+  p {
+    font-family: $font-family;
+    font-weight: $font-weight-regular;
+  }
+
+  a {
+    color: $black;
+    font-family: $font-family;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+  .app-TopNavbar {
+    background-color : $light-gray;
+  }
+  .app-PageWrapper{
+    margin-bottom: 165px;
+    background-color : $light-gray;
+  }
+  .app-PageWrapper__transparent {
+    background-color : $light-gray;
+  }
+  div {
+    font-family: $font-family;
+  }
+  .app-ResourcePage .row {
+    @media (max-width: $screen-md-min) {
+      margin:0px;
+    }      
+  }
+  .app-SearchResultsPaging__selected.btn, .notification-container .notification-info {
+    background-color: $blue-light;
+  }
+  .btn-primary {
+    background-color : $blue-light;
+    border-color : $blue-light;
+    color: $black;
+  }
+  .app-HomePageContent .btn-primary, .app-SearchPage .btn-primary  {
+    background-color : $black;
+    border-color : $black;
+    color: $white;
+  }
+
+  // Navbar
+  // ------
+
+  .brand-logo {
+    background-image: url('../../../../shared/logo/lpr_logo_black.png');
+  }
+
+  .app-MainNavbar {
+    background-color: $blue;
+  }
+
+  .app-SideNavbar .app-Sidebar__sidebar {
+    background-color: $blue;
+
+    h1, h2, h3, h4, h5, h6, p, a {
+      color: $white;
+      &:hover, &:focus {
+        color: $white;
+      }
+    }
+    .app-Navbar {
+      background-color: $blue;
+      .main-nav {
+        .nav.nav-stacked {
+          li {
+            border-bottom: 1px solid lighten($blue, 6);
+            &:first-of-type {
+              border-top: 1px solid lighten($blue, 6);
+            }
+          }
+        }
+      }
+    }
+
+    .feedback-link {
+      color: #bbb;
+      &:hover, &:focus {
+        color: #bbb;
+      }
+    }
+  }
+
+  .app-SideNavbar__toggle {
+    background-color: $blue;
+    color: $white;
+
+    &:hover, &:focus {
+      color: $white;
+    }
+  }
+
+  // Footer
+  // ------
+
+  footer {
+    margin-top: -100px;
+    background-color: $blue;
+
+    .brand-link, .brand-link:hover {
+      color: #fff;
+
+      img {
+        display: none;   
+        height: 50px;
+      }
+    }
+    .brand-link {
+        background-image: url('../../../../shared/logo/logolpr.png');
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-size: 50%;
+        padding-top: 50px;
+        width: 300px;
+        margin: 0 auto;
+      }
+    .feedback-link {
+      color: #ccc;
+    }
+
+    .about-link {
+      color: #fff;
+    }
+    @media (max-width: $screen-md-min) {
+      .brand-link {
+          background-size: 20%;
+        }
+    }
+  }
+
+  // Home-page
+  // ----------
+
+  .app-HomePage__koro {
+    visibility: hidden;
+  }
+
+  .app-HomePageContent {
+    padding-top: 50px;
+  }
+
+  .app-HomePage .app-HomePageContent__banner
+    div {
+      background-color: $blue-light;
+    }
+  .app-HomePage .app-HomePageContent__banner img {
+    margin:40px auto;
+    width:64px;
+  }
+  .app-HomePage__content h1 span, .app-HomePage__content h5 span {
+//    background-color: rgba(0,0,0,0.5);
+    color:$blue-light;
+    padding:5px;
+    display:inline-block;
+  }
+  // Search-page
+  // -----------
+
+  .app-SearchControlsContainer {
+    background-color: $blue-light;
+  }
+
+  .app-MapToggle {
+    background-color: $blue-light;
+    button {
+      background-color: $blue-light;
+      border-color: $blue-light;
+    }
+    button:hover,
+    button:active {
+      background-color: darken($blue-light, 5);
+      border-color: darken($blue-light, 5);
+    }
+  }
+
+  // Resource-page
+  // -------------
+
+  .app-ResourceHeader {
+    background-color: $blue-light;
+  }
+
+  .app-TimeSlot {
+    &--disabled {
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+
+    &--own-reservation {
+      background-color: $blue;
+
+      &:hover {
+        cursor: not-allowed;
+        background-color: $blue;
+      }
+    }
+  }
+  .app-ResourcePage__content {
+    padding:30px;
+  }
+  .app-ResourcePage__content .row{
+    margin:0px;
+  }
+  .app-ResourceMapInfo__content a, .app-ResourceInfo__servicemap{
+    display:none;
+  }
+  .app-TimeSlot--icon {
+    display:none;
+}
+
+  // Admin-resources-page
+  // --------------------
+
+  .availability-view {
+    .top-left, .date-selector {
+      background-color: $blue;
+    }
+    .reservation {
+      background-color: $blue;
+
+      &-link:hover {
+        text-decoration: none;
+      }
+      &.requested {
+        background-color: $warning;
+      }
+      &.disabled {
+        background-color: $red;
+      }
+    }
+
+    .reservation-slot {
+      &-selected {
+        background-color: $blue;
+      }
+    }
+  }
+
+  // About-page
+  // ----------
+
+  .about-page {
+    .about-page-logos {
+      margin-bottom: 20px;
+      margin-top: -15px;
+
+      .aika-logo {
+        height: 40px;
+        margin-top: 20px;
+        margin-right: 10px;
+      }
+      .eu-vipuvoimaa-logo {
+        height: 60px;
+        margin-top: 20px;
+        margin-right: 10px;
+      }
+      .eakr-logo {
+        height: 80px;
+        margin-top: 20px;
+      }
+    }
+  }
+  .app-UserReservationPage .app-PageWrapper {
+    background-color: $light-gray;
+  }
+  .app-ReservationPage__phase-active .app-ReservationPage__phase-index, .app-ReservationPage__phase-active:not(:first-child):before, .app-ReservationPage__phase-completed .app-ReservationPage__phase-index, .app-ReservationPage__phase-completed:not(:first-child):before, .app-ReservationPage__phase-completed:not(:last-child):after {
+    background-color: $blue-light;
+  }
+  .app-ReservationPage .btn.btn-warning {
+    background-color : $light-yellow;
+    border-color : $light-yellow;
+  }
+  .app-ReservationPage .btn.btn-warning{
+    float:right;
+  }
+  .app-ReservationPage .app-PageWrapper {
+    background-color: $white;
+  }
+  .reservation-date__month {
+    background-color: $blue;
+  }
+  .reservation-date__content {
+    border-color: $blue;
+  }
+  .appReservationConfirmation__button {
+    background-color: $light-yellow;
+    color: $black;
+  }
+  .app-UserReservationPage__wrapper .btn-default {
+    background-color: $light-yellow;
+  }
+  // Modals
+  // ------
+  .modal {
+    .modal-header::before {
+      background-image: url('../../shared/logo/logolpr.png');
+    }
+  }
+  .app-ResourceInfo__images-wrapper,
+  .app-DatePickerControl__modal-header,
+  .app-PurposeControl__modal-header,
+  .app-PositionControl__modal-header,
+  .app-PeopleCapacityControl__modal-header {
+    h1, h2, h3, h4, h5, h6 {
+      color: white;
+    }
+  }
+}

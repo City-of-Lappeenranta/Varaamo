@@ -1,0 +1,8 @@
+{
+  "realm": "Varaamo",
+  "auth-server-url": "https://varaamodev-tunnistamo.octo3.fi/auth",
+  "ssl-required": "external",
+  "resource": "varaamo",
+  "public-client": true,
+  "confidential-port": 0
+}
