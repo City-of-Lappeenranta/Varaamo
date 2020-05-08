@@ -1,5 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
 import moment from 'moment';
+import ReactGA from 'react-ga';
 import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
@@ -29,6 +30,7 @@ class UnconnectedResourcePage extends Component {
   }
 
   componentDidMount() {
+    ReactGA.pageview(this.props.resource.name);
     this.props.actions.clearReservations();
     this.fetchResource();
   }

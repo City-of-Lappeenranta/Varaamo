@@ -65,7 +65,7 @@ class ReservationControls extends Component {
         return null;
       }
       return isAdmin ?
-        [buttons.edit, buttons.cancel] :
+        [buttons.info, buttons.edit, buttons.cancel] :
         [isPaid ? null : buttons.edit, isPaid ? null : buttons.cancel];
     }
 

@@ -28,6 +28,7 @@ function ResourceAvailability({ date, resource, t }) {
     status = availabilityData.status;
     values = availabilityData.values;
   }
+  if (status === 'availableAt') bsStyle = 'info';
 
   return (
     <Label bsStyle={bsStyle} className="resource-availability">

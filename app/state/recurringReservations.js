@@ -23,7 +23,7 @@ const initialState = {
   baseTime: null,
   frequency: '',
   lastTime: null,
-  numberOfOccurrences: 1,
+  numberOfOccurrences: 2,
   reservations: [],
 };
 
@@ -34,7 +34,7 @@ export function populateReservations({ baseTime, frequency, numberOfOccurrences 
   }
   const begin = moment(baseTime.begin);
   const end = moment(baseTime.end);
-  for (let i = 1; i <= numberOfOccurrences; i += 1) {
+  for (let i = 1; i <= numberOfOccurrences - 1; i += 1) {
     reservations.push({
       begin: begin.clone().add(i, frequency).toISOString(),
       end: end.clone().add(i, frequency).toISOString(),
@@ -49,7 +49,7 @@ function setOccurrences(state, numberOfOccurrences) {
     numberOfOccurrences,
     lastTime: (
         moment(state.baseTime.begin)
-        .add(numberOfOccurrences, state.frequency)
+        .add(numberOfOccurrences - 1, state.frequency)
         .format('YYYY-MM-DD')
     ),
   };
@@ -72,7 +72,7 @@ function adjustState(state, changeLastTime = false) {
   if (!state.baseTime || !state.frequency || (!state.lastTime && !state.numberOfOccurrences)) {
     return { ...state, reservations: [] };
   }
-  let numberOfOccurrences = 1;
+  let numberOfOccurrences = 2;
   if (changeLastTime) {
     const start = moment(state.baseTime.begin).startOf('day');
     const end = moment(state.lastTime).startOf('day');

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
@@ -97,6 +98,10 @@ export class UnconnectedReservationCalendarContainer extends Component {
 
   handleReserveClick = () => {
     const { actions, isAdmin, resource, selected, t } = this.props;
+    ReactGA.event({
+      category: 'Click make reservation',
+      action: resource.name,
+    });
     if (!isAdmin && hasMaxReservations(resource)) {
       actions.addNotification({
         message: t('TimeSlots.maxReservationsPerUser'),
@@ -152,6 +157,13 @@ export class UnconnectedReservationCalendarContainer extends Component {
             time={time}
           />
         }
+        <div className="calendar-legend">
+          <span className="free">{t('ReservationCalendarPickerLegend.free')}</span>
+          <span className="busy">{t('ReservationCalendarPickerLegend.busy')}</span>
+          <span className="booked">{t('ReservationCalendarPickerLegend.booked')}</span>
+          <span className="unavailable">{t('ReservationCalendarPickerLegend.unavailable')}</span>
+          <span className="own">{t('ReservationCalendarPickerLegend.own')}</span>
+        </div>
         {showTimeSlots && selected.length > 0 &&
         <div className="reservation-calendar-reserve-info">
           <Row>

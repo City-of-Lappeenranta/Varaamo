@@ -77,13 +77,13 @@ export class UnconnectedResourceCalendar extends Component {
               modifiers={{
                 available: (day) => {
                   const dayDate = day.toISOString().substring(0, 10);
-                  return availability[dayDate] && availability[dayDate].percentage >= 80;
+                  return availability[dayDate] && availability[dayDate].percentage >= 98;
                 },
                 busy: (day) => {
                   const dayDate = day.toISOString().substring(0, 10);
                   return (
                     availability[dayDate] &&
-                    availability[dayDate].percentage < 80 &&
+                    availability[dayDate].percentage < 98 &&
                     availability[dayDate].percentage > 0
                   );
                 },

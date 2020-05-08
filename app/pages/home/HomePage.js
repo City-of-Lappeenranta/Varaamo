@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactGA from 'react-ga';
 import { browserHistory } from 'react-router';
 import Button from 'react-bootstrap/lib/Button';
 import Col from 'react-bootstrap/lib/Col';
@@ -12,13 +13,13 @@ import { injectT } from 'i18n';
 import PageWrapper from 'pages/PageWrapper';
 import HomeSearchBox from './HomeSearchBox';
 import homePageSelector from './homePageSelector';
-import iconSale from './images/sale.svg';
-import iconPerform from './images/meet.svg';
-import iconSports from './images/sport.svg';
-import iconSauna from './images/sauna.svg';
-import iconClub from './images/club.svg';
-import iconMeeting from './images/meeting.svg';
-import iconCamp from './images/camp.svg';
+import iconSale from './images/icon-pitaanayttely.svg';
+import iconPerform from './images/icon-esiintya.svg';
+import iconSports from './images/icon-liikkua.svg';
+import iconSauna from './images/icon-saunoa.svg';
+import iconClub from './images/icon-valmistaaesineita.svg';
+import iconMeeting from './images/icon-pitaakokouksen.svg';
+import iconCamp from './images/icon-vuokratatapahtumatarvikkeita.svg';
 
 const purposeIcons = {
   performOrPlay: iconPerform,
@@ -40,6 +41,7 @@ class UnconnectedHomePage extends Component {
   }
 
   componentDidMount() {
+    ReactGA.pageview('Etusivu');
     this.props.actions.fetchPurposes();
   }
 
@@ -48,6 +50,11 @@ class UnconnectedHomePage extends Component {
   }
 
   handleBannerClick(purpose) {
+    const type = 'Tyyppi: ';
+    ReactGA.event({
+      category: 'Click by category on front page',
+      action: type + purpose,
+    });
     browserHistory.push(`/search?purpose=${purpose}`);
   }
 
@@ -80,14 +87,18 @@ class UnconnectedHomePage extends Component {
       <div className="app-HomePage">
         <div className="app-HomePage__content container">
           <div className="back-Opacity">
-            <h1><span>Varaamo –</span></h1>
-            <h1><span>{t('HomePage.contentTitle')}</span></h1>
+            <h1><span>Varaamo</span></h1>
             <h5><span>{t('HomePage.contentSubTitle')}</span></h5>
           </div>
           <HomeSearchBox onSearch={this.handleSearch} />
         </div>
         <div className="app-HomePage__koro" />
         <PageWrapper className="app-HomePageContent" title={t('HomePage.title')}>
+          <div className="HomeArticle">
+            <h4>{t('HomePage.helpTextTitle')}</h4>
+            <p>{t('HomePage.helpText1')}</p>
+            <p>{t('HomePage.helpText2')}</p>
+          </div>
           <h4>{t('HomePage.bannersTitle')}</h4>
           <Loader loaded={!isFetchingPurposes}>
             <div className="app-HomePageContent__banners">

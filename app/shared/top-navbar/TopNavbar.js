@@ -1,14 +1,15 @@
 import React, { Component, PropTypes } from 'react';
+import ReactGA from 'react-ga';
 import { Link } from 'react-router';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import NavItem from 'react-bootstrap/lib/NavItem';
-import iconGlobe from 'hel-icons/dist/shapes/globe.svg';
-import iconUser from 'hel-icons/dist/shapes/user-o.svg';
 
 import { injectT } from 'i18n';
+import iconGlobe from '../../pages/home/images/FI.svg';
+import iconUser from '../../pages/home/images/kirjaudu-sisaan.svg';
 
 class TopNavbar extends Component {
   static propTypes = {
@@ -20,8 +21,12 @@ class TopNavbar extends Component {
   };
 
   handleLoginClick() {
+    ReactGA.event({
+      category: 'Click button',
+      action: 'login',
+    });
     const next = encodeURIComponent(window.location.href);
-    window.location.assign(`${window.location.origin}/login?next=${next}`);
+    window.location.assign(`${window.location.origin}/login?next=${next}&locale=sv&kc_locale=sv&ui_locales=sv&kcLocale=sv`);
   }
 
   render() {

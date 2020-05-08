@@ -19,8 +19,7 @@ class UnconnectedReservationTermsModal extends Component {
       t,
     } = this.props;
 
-    const { genericTerms, name } = resource;
-
+    const { genericTerms, specificTerms, name } = resource;
     return (
       <Modal
         className="app-ReservationTermsModal"
@@ -37,6 +36,7 @@ class UnconnectedReservationTermsModal extends Component {
           <div>
             <span>{t('ReservationTermsModal.resourceTermsSubTitle', { name })}</span>
             <span><WrappedText text={genericTerms} /></span>
+            <span className="app-ResourceCard"><WrappedText text={specificTerms} /></span>
           </div>
         </Modal.Body>
 

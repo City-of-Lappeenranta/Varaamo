@@ -1,4 +1,5 @@
 import isEqual from 'lodash/isEqual';
+import ReactGA from 'react-ga';
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
@@ -25,6 +26,7 @@ class UnconnectedSearchPage extends Component {
   }
 
   componentDidMount() {
+    ReactGA.pageview('Haku');
     const { actions, filters, location, searchDone, uiFilters } = this.props;
     actions.fetchPurposes();
     actions.fetchUnits();

@@ -2,19 +2,18 @@ import classnames from 'classnames';
 import round from 'lodash/round';
 import queryString from 'query-string';
 import React, { Component, PropTypes } from 'react';
+import ReactGA from 'react-ga';
 import { browserHistory, Link } from 'react-router';
-import Col from 'react-bootstrap/lib/Col';
-import iconHome from 'hel-icons/dist/shapes/home.svg';
-import iconMapMarker from 'hel-icons/dist/shapes/map-marker.svg';
-import iconTicket from 'hel-icons/dist/shapes/ticket.svg';
-import iconUser from 'hel-icons/dist/shapes/user-o.svg';
 
 import { injectT } from 'i18n';
-import iconMap from 'assets/icons/map.svg';
 import BackgroundImage from 'shared/background-image';
 import { getMainImage } from 'utils/imageUtils';
 import { getResourcePageUrl, getHourlyPrice } from 'utils/resourceUtils';
 import ResourceAvailability from './ResourceAvailability';
+import iconHome from '../../pages/home/images/A-tila.svg';
+import iconMapMarker from '../../pages/home/images/D-sijainti.svg';
+import iconTicket from '../../pages/home/images/C-hinta.svg';
+import iconUser from '../../pages/home/images/B-hlomaara.svg';
 
 
 class ResourceCard extends Component {
@@ -40,6 +39,10 @@ class ResourceCard extends Component {
   }
 
   handleLinkClick = () => {
+    ReactGA.event({
+      category: 'Click by resource on resource list page',
+      action: this.props.resource.name,
+    });
     const scrollTop = window.pageYOffset ||
       document.documentElement.scrollTop ||
       document.body.scrollTop;
@@ -103,60 +106,44 @@ class ResourceCard extends Component {
             <ResourceAvailability date={date} resource={resource} />
           </div>
           <Link onClick={this.handleLinkClick} to={getResourcePageUrl(resource, date)}>
-            <h4>{resource.name}</h4>
+            <h2>{resource.name}</h2>
           </Link>
           <div className="app-ResourceCard__description">
             {resource.description}
           </div>
         </div>
         <div className="app-ResourceCard__info">
-          <Col md={4} sm={2} xs={4}>
-            <a
-              className="app-ResourceCard__info-link app-ResourceCard__info-link-capitalize"
-              onClick={this.handleSearchByType}
-              role="button"
-              tabIndex="-1"
-            >
-              <img alt={resource.type.name} className="app-ResourceCard__info-icon" src={iconHome} />
-              <span className="app-ResourceCard__info-label">{resource.type ? resource.type.name : '\u00A0'}</span>
-            </a>
-          </Col>
-          <Col md={4} sm={2} xs={4}>
-            <a
-              className="app-ResourceCard__info-link"
-              onClick={this.handleSearchByPeopleCapacity}
-              role="button"
-              tabIndex="-1"
-            >
-              <img alt={resource.peopleCapacity} className="app-ResourceCard__info-icon" src={iconUser} />
-              <span className="app-ResourceCard__info-label app-ResourceCard__peopleCapacity">
-                {t('ResourceCard.peopleCapacity', { people: resource.peopleCapacity })}
-              </span>
-            </a>
-          </Col>
-          <Col md={4} sm={2} xs={4}>
-            <div className="app-ResourceCard__info-detail">
-              <img alt={resource.type.name} className="app-ResourceCard__info-icon" src={iconTicket} />
-              <span className="app-ResourceCard__info-label app-ResourceCard__hourly-price">
-                {getHourlyPrice(t, resource) || '\u00A0'}
-              </span>
-            </div>
-          </Col>
-          <Col md={4} sm={3} xs={4}>
-            <div className="app-ResourceCard__info-detail">
-              <img alt={resource.type.name} className="app-ResourceCard__info-icon" src={iconMap} />
-              <span className="app-ResourceCard__info-label app-ResourceCard__street-address">{unit.streetAddress}</span>
-              <span className="app-ResourceCard__info-label app-ResourceCard__zip-address">{unit.addressZip} {unit.municipality}</span>
-            </div>
-          </Col>
-          <Col md={4} sm={2} xs={4}>
-            <Link onClick={this.handleLinkClickMap} to={getResourcePageUrl(resource, date)}>
-              <img alt={resource.type.name} className="app-ResourceCard__info-icon" src={iconMapMarker} />
-              <span className="app-ResourceCard__info-label app-ResourceCard__distance">
-                {resource.distance ? this.renderDistance(resource.distance) : '\u00A0'}
-              </span>
-            </Link>
-          </Col>
+          <a
+            className="app-ResourceCard__info-link app-ResourceCard__info-link-capitalize"
+            onClick={this.handleSearchByType}
+            role="button"
+            tabIndex="-1"
+          >
+            <img alt={resource.type.name} className="app-ResourceCard__info-icon" src={iconHome} />
+            <span className="app-ResourceCard__info-label">{resource.type ? resource.type.name : '\u00A0'}</span>
+          </a>
+          <a
+            className="app-ResourceCard__info-link"
+            onClick={this.handleSearchByPeopleCapacity}
+            role="button"
+            tabIndex="-1"
+          >
+            <img alt={resource.peopleCapacity} className="app-ResourceCard__info-icon" src={iconUser} />
+            <span className="app-ResourceCard__info-label app-ResourceCard__peopleCapacity">
+              {t('ResourceCard.peopleCapacity', { people: resource.peopleCapacity })}
+            </span>
+          </a>
+          <div className="app-ResourceCard__info-link app-ResourceCard__info-detail">
+            <img alt={resource.type.name} className="app-ResourceCard__info-icon" src={iconTicket} />
+            <span className="app-ResourceCard__info-label app-ResourceCard__hourly-price">
+              {getHourlyPrice(t, resource) || '\u00A0'}
+            </span>
+          </div>
+          <Link className="app-ResourceCard__info-link" onClick={this.handleLinkClickMap} to={getResourcePageUrl(resource, date)}>
+            <img alt={resource.type.name} className="app-ResourceCard__info-icon" src={iconMapMarker} />
+            <span className="app-ResourceCard__info-label app-ResourceCard__street-address">{unit.streetAddress}</span>
+            <span className="app-ResourceCard__info-label app-ResourceCard__zip-address">{unit.addressZip} {unit.municipality}</span>
+          </Link>
         </div>
       </div>
     );

@@ -30,6 +30,7 @@ const maxLengths = {
   billingAddressStreet: 100,
   billingAddressZip: 30,
   company: 100,
+  manualPrice: 30,
   numberOfParticipants: 100,
   reserverAddressCity: 100,
   reserverAddressStreet: 100,
@@ -118,6 +119,7 @@ class UnconnectedReservationForm extends Component {
     const {
       isEditing,
       isMakingReservations,
+      isManualConfirmation,
       handleSubmit,
       onCancel,
       onConfirm,
@@ -143,6 +145,15 @@ class UnconnectedReservationForm extends Component {
                 t('ReservationForm.staffEventLabel'),
                 {},
                 t('ReservationForm.staffEventHelp'),
+              )}
+            </Well>
+          )}
+          {staffEventSelected && isManualConfirmation && (
+            <Well>
+              {this.renderField(
+                'manualPrice',
+                'text',
+                t('common.manualPriceLabel'),
               )}
             </Well>
           )}
@@ -276,6 +287,7 @@ UnconnectedReservationForm.propTypes = {
   fields: PropTypes.array.isRequired,
   isEditing: PropTypes.bool.isRequired,
   isMakingReservations: PropTypes.bool.isRequired,
+  isManualConfirmation: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   maxReservationPeriod: PropTypes.string,
   onCancel: PropTypes.func.isRequired,

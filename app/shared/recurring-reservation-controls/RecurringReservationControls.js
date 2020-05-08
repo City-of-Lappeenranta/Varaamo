@@ -60,13 +60,15 @@ function RecurringReservationControls({
               </ControlLabel>
               <NumericInput
                 className="form-control"
-                min={1}
+                min={2}
                 onChange={changeNumberOfOccurrences}
                 value={numberOfOccurrences}
               />
             </FormGroup>
           </Col>
         }
+      </Row>
+      <Row>
         {frequency !== '' &&
           <Col sm={4} xs={12}>
             <FormGroup controlId="LastTimeGroup">

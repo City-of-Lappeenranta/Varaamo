@@ -1,6 +1,7 @@
 import { pick, uniq } from 'lodash';
 import camelCase from 'lodash/camelCase';
 import React, { Component, PropTypes } from 'react';
+import ReactGA from 'react-ga';
 import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import Well from 'react-bootstrap/lib/Well';
@@ -30,6 +31,10 @@ class ReservationInformation extends Component {
 
   onConfirm = (values) => {
     const { onConfirm } = this.props;
+    ReactGA.event({
+      category: 'Click save reservation',
+      action: this.props.resource.name,
+    });
     onConfirm(values);
   }
 
@@ -50,7 +55,7 @@ class ReservationInformation extends Component {
       // formFields.push('reserverPhoneNumber');
     }
 
-    if (resource.needManualConfirmation && isStaff) {
+    if (isStaff) {
       formFields.push('staffEvent');
     }
 

@@ -19,6 +19,7 @@ Reservation.propTypes = {
   comments: PropTypes.string,
   end: PropTypes.string.isRequired,
   eventSubject: PropTypes.string,
+  manualPrice: PropTypes.number,
   id: PropTypes.number.isRequired,
   numberOfParticipants: PropTypes.number,
   onClick: PropTypes.func,

@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 import InputGroup from 'react-bootstrap/lib/InputGroup';
@@ -14,7 +13,7 @@ import {
   calculateEndTime,
 } from 'utils/timeUtils';
 import SearchControlOverlay from './SearchControlOverlay';
-import iconCalendar from './images/calendar.svg';
+import iconCalendar from './images/calendar-grey.svg';
 
 class DatePickerControl extends React.Component {
   static propTypes = {
@@ -77,10 +76,9 @@ class DatePickerControl extends React.Component {
 
     return (
       <div className="app-DatePickerControl">
-        <ControlLabel>{t('DatePickerControl.label')}</ControlLabel>
         <FormGroup onClick={this.showOverlay}>
           <InputGroup>
-            <InputGroup.Addon className="app-DatePickerControl__title">
+            <InputGroup.Addon className="app-DatePickerControl__title" placeholder="{t('DatePickerControl.label')}" >
               <img alt="" className="app-DatePickerControl__icon" src={iconCalendar} />
               <span>{date}</span>
             </InputGroup.Addon>

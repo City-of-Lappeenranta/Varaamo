@@ -28,7 +28,9 @@ export default {
   },
   REQUIRED_STAFF_EVENT_FIELDS: [
     'eventDescription',
+    'reserverEmailAddress',
     'reserverName',
+    'reserverPhoneNumber',
   ],
   RESERVATION_STATE_LABELS: {
     cancelled: {

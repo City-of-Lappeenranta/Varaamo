@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
@@ -54,10 +53,10 @@ class SearchBox extends React.Component {
     const { t, value } = this.props;
     return (
       <form className="app-SearchBox" onSubmit={this.handleSubmit}>
-        <ControlLabel>{t('SearchBox.placeholder')}</ControlLabel>
         <FormControl
           className="app-SearchBox__text-field"
           onChange={this.handleChange}
+          placeholder={t('SearchBox.placeholder')}
           type="text"
           value={value}
         />

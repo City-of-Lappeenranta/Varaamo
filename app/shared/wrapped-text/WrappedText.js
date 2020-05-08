@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Linkify from 'react-linkify';
 
 function renderParagraph(text, index) {
-  return <div key={index}><Linkify>{text}</Linkify></div>;
+  return <div key={index}><Linkify properties={{ target: '_blank' }}>{text}</Linkify></div>;
 }
 
 function WrappedText({ text }) {

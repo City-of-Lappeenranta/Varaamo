@@ -59,6 +59,7 @@ function notificationsReducer(state = initialState, action) {
 
     case types.UI.ADD_NOTIFICATION: {
       const notification = action.payload;
+      console.log('notification:', notification);
       return addNotification(state, notification);
     }
 

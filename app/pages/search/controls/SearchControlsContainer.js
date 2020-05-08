@@ -2,6 +2,7 @@ import range from 'lodash/range';
 import moment from 'moment';
 import queryString from 'query-string';
 import React, { Component, PropTypes } from 'react';
+import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
@@ -28,7 +29,8 @@ import SearchBox from './SearchBox';
 import searchControlsSelector from './searchControlsSelector';
 import SelectControl from './SelectControl';
 import TimeRangeControl from './TimeRangeControl';
-import iconTimes from './images/times.svg';
+import iconTimes from './images/x-black.svg';
+import iconSearch from './images/search-white.svg';
 
 class UnconnectedSearchControlsContainer extends Component {
 
@@ -112,6 +114,11 @@ class UnconnectedSearchControlsContainer extends Component {
     const page = 1;
     const filters = { ...this.props.filters, ...newFilters, page };
     browserHistory.push(`/search?${queryString.stringify(filters)}`);
+    const text = 'Haku: ';
+    ReactGA.event({
+      category: 'Click search on search page',
+      action: text + filters.search,
+    });
     if (!options.preventScrolling) {
       scrollToSearchResults();
     }
@@ -159,6 +166,30 @@ class UnconnectedSearchControlsContainer extends Component {
                   date={moment(filters.date).format('L')}
                   onConfirm={this.handleDateChange}
                 />
+                <Button
+                  bsStyle="primary"
+                  className="app-SearchControlsContainer__submit-button"
+                  key="submit-button"
+                  onClick={() => this.handleSearch()}
+                  type="submit"
+                >
+                  <img alt="" src={iconSearch} />
+                </Button>
+              </Col>
+            </Row>
+            <Row className="app-SearchControlsContainer__buttons">
+              <Col sm={12}>
+                {hasFilters &&
+                  <Button
+                    bsStyle="link"
+                    className="app-SearchControlsContainer__reset-button"
+                    key="reset-button"
+                    onClick={this.handleReset}
+                  >
+                    <img alt="" src={iconTimes} />
+                    {t('SearchControlsContainer.resetButton')}
+                  </Button>
+                }
               </Col>
             </Row>
             <Panel collapsible header={t('SearchControlsContainer.advancedSearch')}>
@@ -193,7 +224,7 @@ class UnconnectedSearchControlsContainer extends Component {
                     value={filters.people ? String(parseInt(filters.people, 10)) : ''}
                   />
                 </Col>
-                <Col className="app-SearchControlsContainer__control" md={4} sm={6}>
+                <Col className="app-SearchControlsContainer__control" lg={12} md={12} sm={12} xl={4}>
                   <PositionControl
                     geolocated={Boolean(this.props.position)}
                     onConfirm={distance => this.handleFiltersChange({ distance })}
@@ -201,7 +232,7 @@ class UnconnectedSearchControlsContainer extends Component {
                     value={parseInt(filters.distance, 10)}
                   />
                 </Col>
-                <Col className="app-SearchControlsContainer__control" md={4} sm={6}>
+                <Col className="app-SearchControlsContainer__control" lg={12} md={12} sm={6} xl={4}>
                   <TimeRangeControl
                     duration={parseInt(filters.duration, 10)}
                     end={filters.end}
@@ -210,7 +241,7 @@ class UnconnectedSearchControlsContainer extends Component {
                     start={filters.start}
                   />
                 </Col>
-                <Col className="app-SearchControlsContainer__control" md={4} sm={6}>
+                <Col className="app-SearchControlsContainer__control" lg={12} md={12} sm={6} xl={4}>
                   <CheckboxControl
                     id="charge"
                     label={t('SearchControlsContainer.chargeLabel')}
@@ -219,31 +250,8 @@ class UnconnectedSearchControlsContainer extends Component {
                   />
                 </Col>
               </Row>
+
             </Panel>
-            <Row className="app-SearchControlsContainer__buttons">
-              <Col sm={12}>
-                <Button
-                  bsStyle="primary"
-                  className="app-SearchControlsContainer__submit-button"
-                  key="submit-button"
-                  onClick={() => this.handleSearch()}
-                  type="submit"
-                >
-                  {t('SearchControlsContainer.searchButton')}
-                </Button>
-                {hasFilters &&
-                  <Button
-                    bsStyle="link"
-                    className="app-SearchControlsContainer__reset-button"
-                    key="reset-button"
-                    onClick={this.handleReset}
-                  >
-                    <img alt="" src={iconTimes} />
-                    {t('SearchControlsContainer.resetButton')}
-                  </Button>
-                }
-              </Col>
-            </Row>
           </div>
         </Grid>
       </div>

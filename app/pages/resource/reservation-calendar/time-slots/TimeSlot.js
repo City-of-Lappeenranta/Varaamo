@@ -32,8 +32,11 @@ class TimeSlot extends Component {
     }
 
     if (!isLoggedIn && resource.reservable) {
+      const login = '/login';
+      const linkUrl = window.location.origin + login;
       return {
         message: t('Notifications.loginToReserve'),
+        link: linkUrl,
         type: 'info',
         timeOut: 10000,
       };

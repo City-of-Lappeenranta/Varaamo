@@ -1,4 +1,5 @@
 import MobileDetect from 'mobile-detect';
+import ReactGA from 'react-ga';
 import React, { Component, PropTypes } from 'react';
 import BodyClassName from 'react-body-classname';
 import Grid from 'react-bootstrap/lib/Grid';
@@ -14,8 +15,11 @@ import Header from 'shared/header';
 import TestSiteMessage from 'shared/test-site-message';
 import Notifications from 'shared/notifications';
 import { getCustomizationClassName } from 'utils/customizationUtils';
+import constants from 'constants/AppConstants';
 
 const userIdSelector = state => state.auth.userId;
+
+ReactGA.initialize(constants.GA_ID);
 
 export const selector = createStructuredSelector({
   userId: userIdSelector,

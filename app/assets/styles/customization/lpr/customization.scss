@@ -1,21 +1,34 @@
 @import "./variables";
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,800');
 
 .lpr-customizations {
-
   // Typography
   // ---------- 
-  background-color : #f0f0f0;
+  background-color : $white;
 
   h1, h2, h3, h4, h5, h6 {
     font-family: $heading-font-family;
     font-weight: $font-weight-bold;
   }
+  h1 {
+    font-size: 74px;
+    font-weight: 800;
+  }
+  h4 {
+    color:$blue;
+    font-size: 36px;
+    font-weight: 800;
+  }
+  h5 {
+    font-size: 28px;
+    font-weight: 800;
+  }
 
   p {
     font-family: $font-family;
-    font-weight: $font-weight-regular;
+    font-weight: 500;
+    margin-bottom: 20px;
   }
 
   a {
@@ -26,15 +39,11 @@
       color: $blue;
     }
   }
-  .app-TopNavbar {
-    background-color : $light-gray;
-  }
   .app-PageWrapper{
     margin-bottom: 165px;
-    background-color : $light-gray;
   }
   .app-PageWrapper__transparent {
-    background-color : $light-gray;
+    background-color : $white;
   }
   .menuInfo {
     display: none;
@@ -43,22 +52,63 @@
     min-width: 160px;
     z-index: 1;
   }
+  .app-ResourceCard__unit-name {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .app-ResourceCard__content a h2{
+    margin: 0;
+    color: $blue-light;
+    font-size: 32px;
+    font-weight: bold;
+  }
   .back-Opacity {
-    background: rgba(50,50,50,0.6);
-    padding: 20px;
+    text-align:center;
+    padding: 20px; 
+  }
+  .app-MainNavbar .navbar-nav li a, .app-MainNavbar .navbar-nav > .active a {
+    font-weight: 600;
+  }
+  .app-MainNavbar .navbar-nav li a:hover, .app-MainNavbar .navbar-nav > .active a:hover {
+    background-color:$blue-light;
+  }
+  .app-MainNavbar .dropdown-menu {
+    background: rgba(50,50,50,0.8) !important;
+    border:0px !important;
     filter:
     progid:DXImageTransform.Microsoft.MotionBlur(strength=13, direction=310)
     progid:DXImageTransform.Microsoft.Blur(pixelradius=2)
-    progid:DXImageTransform.Microsoft.Wheel(duration=3);  
+    progid:DXImageTransform.Microsoft.Wheel(duration=3);
   }
-  .app-MainNavbar .dropdown-menu {
-    background: $blue !important;
+  .dropdown-menu a {
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .dropdown-menu div {
+    font-size: 14px;
+    font-weight: 600;
+    color: $white;
+    padding: 5px 0;
+  }
+  .dropdown-menu {
+    min-width: 260px;
+    padding: 15px 20px;
+  }
+  .app-HomePage .app-HomePageContent__banner button {
+    text-transform: none;
   }
   ul.dropdown-menu li:last-child {
     float: none !important;
   }
   .show {
-      display: block;
+    display: block;
+  }
+  .notification-container {
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+  .notification-container span .notification-info {
+    position: absolute;
   }
   div {
     font-family: $font-family;
@@ -68,8 +118,11 @@
       margin:0px;
     }      
   }
+  .reservation-date {
+    margin-bottom: 20px;
+  }
   .app-SearchResultsPaging__selected.btn, .notification-container .notification-info {
-    background-color: $blue-light;
+    background-color: $red;
   }
   .btn-primary {
     background-color : $blue-light;
@@ -77,9 +130,16 @@
     color: $black;
   }
   .app-HomePageContent .btn-primary, .app-SearchPage .btn-primary  {
-    background-color : $black;
-    border-color : $black;
+    background-color : $blue-light;
+    border-color : $blue-light;
+    border-radius: 23px;
+    padding:15px 20px;
+    font-size: 15px;
+    font-weight: 600;
     color: $white;
+  }
+  .app-TopNavbar {
+    background-color: #f0f0f0;
   }
   nav.app-MainNavbar ul.navbar-nav li:last-child {
     float:right;
@@ -100,13 +160,16 @@
   }
   // Navbar
   // ------
-
+  .container-fluid {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
   .brand-logo {
     background-image: url('../../../../shared/logo/lpr_logo_black.png');
   }
 
   .app-MainNavbar {
-    background-color: $blue;
+    background-color: $blue-light;
   }
 
   .app-SideNavbar .app-Sidebar__sidebar {
@@ -153,8 +216,10 @@
   // ------
 
   footer {
-    margin-top: -100px !important;
-    background-color: $blue;
+    margin-top: -87px !important;
+    background-color: #f0f0f0;
+    color: $black;
+    font-size: 14px;
 
     .brand-link, .brand-link:hover {
       color: #fff;
@@ -164,19 +229,19 @@
         height: 50px;
       }
     }
+    .container {
+      padding-top: 25px;
+      padding-bottom: 0px;
+    }
     .brand-link {
-        background-image: url('../../../../shared/logo/logolpr.png');
+        background-image: url('../../../../pages/home/images/LPR-logo.svg');
         background-repeat: no-repeat;
         background-position-x: center;
-        background-size: 50%;
+        background-size: 40%;
         padding-top: 50px;
         width: 300px;
         margin: 0 auto;
       }
-    .feedback-link {
-      color: #ccc;
-    }
-
     .about-link {
       color: #fff;
     }
@@ -189,54 +254,323 @@
 
   // Home-page
   // ----------
+  .app-HomePage {
+    background-position: center -120px;
+  }
+  .app-HomePage h2 {
+    font-size: 28px;
+    font-weight: 800;
+  }
 
   .app-HomePage__koro {
     visibility: hidden;
   }
-
-  .app-HomePageContent {
-    padding-top: 50px;
+  .app-HomePage .app-HomeSearchBox {
+    margin: 20px 0;
   }
-
+  .app-HomePage h4 {
+    margin: 80px 0 30px 0;
+  }
+  .app-HomePage .app-HomeSearchBox__textfield {
+    border: 0px;
+    border-radius: 10px 0px 0px 10px;
+    padding: 10px 14px;
+    height: 50px;
+  }
+  .app-TopNavbar__icon {
+    height: 21px;
+    margin-right: 5px;
+  }
+  .app-MainNavbar .navbar-brand, .app-MainNavbar .navbar-brand:hover, .app-MainNavbar .navbar-toggle .icon-bar {
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .navbar-nav .nav > li {
+    font-size: 16px;
+  }
+  .app-HomePage__content {
+    padding-top: 100px;
+    padding-bottom: 130px;
+  }
+  .app-HomePage .app-HomeSearchBox button {
+    margin-left: 0px;
+    border-radius: 0px 10px 10px 0;
+    height: 50px;
+    margin-top: -3px;
+    width: 50px;
+    background-image: url(../../../../pages/home/images/search-white.svg);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .app-HomePage .app-HomePageContent__banners {
+    display: block;
+    flex-direction: row;
+  }
+  .app-HomePage {
+    background-size:auto;
+  }
+  .app-HomePage .app-HomeSearchBox {
+    text-align: center;
+  }
   .app-HomePage .app-HomePageContent__banner
     div {
-      background-color: $blue-light;
+      background-color: $white;
     }
   .app-HomePage .app-HomePageContent__banner img {
-    margin:40px auto;
-    width:64px;
+    margin: 5px 0;
+    height: 155px;
   }
+  .app-HomePage .app-HomePageContent__banner h5 {
+    font-size: 18px;
+    min-height: 45px;
+  }
+
   .app-HomePage__content h1 span, .app-HomePage__content h5 span {
-//    background-color: rgba(0,0,0,0.5);
-    color:$blue-light;
-    padding:5px;
+    color:$white;
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 130%;
     display:inline-block;
   }
   // Search-page
   // -----------
-
-  .app-SearchControlsContainer {
-    background-color: $blue-light;
+  .app-SearchControlsContainer__content {
+    padding: 30px 0;
+    text-align: center;
+    color: $white;
+    position: relative;
   }
-
-  .app-MapToggle {
+  .app-SearchControlsContainer__content .DayPicker-Caption{
+    color: $black;
+  }
+  .app-SearchBox, .app-DatePickerControl {
+    border: 0px;
+    background-color:$white;
+    border-radius: 10px 0px 0px 10px;
+    padding: 5px 14px;
+    margin-right: -15px;
+    border-right: 2px solid $light-gray;
+  }
+  .app-SearchBox .form-control {
+    border: 0px;
+    color: #969696;
+    font-weight: 500;
+  }
+  .app-DatePickerControl {
+    border-radius: 0px;
+    margin-left: -15px;
+    width: 90%;
+    float: left;
+    min-width: 300px;
+    border-right:0px;
+  }
+  .app-SearchPage .btn-primary {
+    background-color: #f09600;
+    border-color: #f09600;
+    font-weight: 600;
+    color: #ffffff;
+    border-radius: 0px 10px 10px 0;
+    height: 50px;
+    float: left;
+    min-width: 54px;
+    padding: 0px;
+    margin-left: 12px;
+  }
+  .app-SearchControlsContainer .btn.btn-link {
+    background: #fff;
+    border-radius: 18px;
+    text-decoration: none;
+    font-size: 15px;
+    margin-left: -265px;
+    padding: 6px 25px;
+    height: 40px;
+  }
+  .app-SearchPage .btn-primary img{
+    width: 24px;
+  }
+  .app-SearchControlsContainer .input-group-addon {
+    border: 0px;
+    color: #969696;
+    font-weight: 500;
+  }
+  .app-SearchControlsContainer__reset-button img {
+    width: 12px;
+    margin-right: 10px;
+  }
+  .app-DatePickerControl__title img {
+    margin-right: 12px;
+    margin-top: -1px;
+  }
+  .app-DatePickerControl .app-SearchControlOverlay__overlay {
+    border: 0px;
+  }
+  .input-group {
+    height: 40px;
+  }
+  .app-SearchControlsContainer {
+    background-color: #ffffff;
+    background-image: url(../../../../pages/home/images/search_tausta.jpg);
+    background-position: center -60px;
+    background-repeat: no-repeat;
+    min-height: 450px;
+  }
+  .app-SearchControlOverlay {
+    margin-left: -14px;
+  }
+  .recurring-reservation-frequency-control .Select .Select-control {
+    background: $light-gray;
+  }
+  .app-SearchControlOverlay__content {
+    padding: 5px;
+  }
+  .app-ResourceCard .label-info {
+    color: $white;
+    background: #5bc0de;
+    position: absolute;
+    left: 10px;
+    border-radius: 18px;
+    padding: 10px 15px;
+  }
+  .app-SearchControlsContainer .panel .panel-heading {
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    background: #fff;
+    border-radius: 18px;
+    padding: 0;
+    width: fit-content;
+    position: absolute;
+    right: 185px;
+    padding: 12px 25px;
+    margin-top: -56px;
+    height: 40px;
+  }
+  .app-SearchControlsContainer__buttons div {
+    min-height: 38px;
+  }
+  .app-ReservationConfirmation__field-value {
+    overflow-x: hidden;
+  }
+  .app-SearchControlsContainer .panel .panel-heading h4 {
+    margin:0px;
+    font-weight:400;
+    padding:0px;
+    margin-top: -2px;
+  }
+  .Select-placeholder, .Select--single > .Select-control .Select-value {
+    max-width: 210px;
+  }
+  .app-SearchControlsContainer .panel .panel-heading .panel-title a[aria-selected="true"]::before, .lpr-customizations .app-SearchControlsContainer .panel .panel-heading .panel-title a[aria-selected="false"]::before {
+    background-image: url(../../../../pages/home/images/tarkennettu-haku-black.svg);
+    background-size: 18px;
+    margin-top: 3px;
+  }
+  .app-SearchControlsContainer .panel .panel-heading h4 a{
+    font-size: 15px;
+    text-decoration:none;
+  }
+  .Select .Select-control, .Select.is-open .Select-control {
+    background-color: #ffffff;
+    border-radius: 0px;
+    border-width: 0px;
+    height: auto;
+    padding:6px;
+  }
+  .Select-placeholder, .Select--single > .Select-control .Select-value {
+    bottom: auto;
+    left: auto;
+    top: auto;
+    right: auto;
+  }
+  .Select-menu-outer {
+    border:0px !important;
+  }
+  .app-ResourceCard {
+    border-top: 2px solid $light-gray;
+    margin: 0;
+    padding: 20px 0;
+  }
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .app-ResourceCard__info-link {
+    width:100%;
+  }
+  .app-ResourceCard__info-link img{
+    float: left;
+  }
+  .app-ResourceCard__info-label {
+    float: left;
+    margin: 8px;
+    font-weight: 600;
+  }
+  .app-ResourceCard__info {
+    text-align: left;
+  }
+  .app-SearchResultsPaging__selected.btn, .app-PageWrapper .notification-container .notification-info, .app-PageWrapper .btn.disabled, .app-PageWrapper .btn[disabled], .app-PageWrapper fieldset[disabled] .btn {
     background-color: $blue-light;
+    border-radius: 18px;
+    margin-right: 5px;
+    border: 0px;
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    padding: 0px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .app-PageWrapper .btn.disabled, .app-PageWrapper .btn[disabled], fieldset[disabled] .btn {
+    background-color: $light-gray;
+    color: $blue;
+  }
+  .app-ResourceCard__info > div {
+    padding-top: 0px;
+  }
+  .app-MapToggle {
+    background-color: $white;
     button {
-      background-color: $blue-light;
-      border-color: $blue-light;
+      border-radius: 24px;
+      margin-left: 10px;
+      border:0px;
+      background-color: $light-gray;
+      border-color: $light-gray;
+      padding: 10px 20px;
     }
     button:hover,
     button:active {
-      background-color: darken($blue-light, 5);
-      border-color: darken($blue-light, 5);
+      color: $white;
+      background-color: $blue-light;
+      border-color: $blue-light;
+    }
+    .container {
+      padding: 25px 0 15px 0;
     }
   }
+  .app-SearchPage .app-MapToggle__results-count {
+    font-size: 15px;
+    font-weight: 800;
+  }
 
+  .panel-default > .panel-heading + .panel-collapse > .panel-body {
+    text-align: left;
+  }
+  .app-TimeRangeControl__label, .app-CheckboxControl__label, .app-PositionControl__label {
+    max-width: 80%;
+  }
+  .app-CheckboxControl__label {
+    position:absolute;
+  }
+  .react-toggle {
+    margin-bottom: 5px;
+  }
   // Resource-page
   // -------------
 
   .app-ResourceHeader {
     background-color: $blue-light;
+    border-top: 1px solid #f9bb1b;
   }
 
   .app-TimeSlot {
@@ -326,6 +660,26 @@
   .app-UserReservationPage .reservation-list .btn-danger {
     display:none;
   }
+  .app-ResourceCard .label-danger, .app-ResourceCard .label-success {
+    position: absolute;
+    left: 10px;
+    border-radius: 18px;
+    padding: 10px 15px;
+  }
+  .app-ResourceCard .label-danger {
+    background-color: $white;
+    color: $black;
+  }
+  .app-ResourcePage .panel .panel-heading .panel-title a::before {
+    top:10px;
+  }
+  .app-TimeRangeControl {
+    padding: 0;
+    max-width: none;
+  }
+  .app-CheckboxControl {
+    padding:0px;
+  }
   .app-ReservationPage__phase-active .app-ReservationPage__phase-index, .app-ReservationPage__phase-active:not(:first-child):before, .app-ReservationPage__phase-completed .app-ReservationPage__phase-index, .app-ReservationPage__phase-completed:not(:first-child):before, .app-ReservationPage__phase-completed:not(:last-child):after {
     background-color: $blue-light;
   }
@@ -353,9 +707,164 @@
     background-color: $light-yellow;
   }
   .app-MapToggle .btn[disabled] {
-    background-color: $light-gray;
-    border-color: $light-gray;
+    background-color: $blue-light;
+    border-color: $blue-light;
+    color: $white;
   }
+  .btn {
+    border: 0px;
+    border-radius: 18px;
+    padding: 6px 25px;
+  }
+  h5.reservation-date__month {
+    font-size: 12px;
+  }
+  h5.reservation-date__day-of-week {
+    font-size: 14px;
+  }
+
+  .modal-content .form-horizontal .form-group {
+    margin-bottom: 0px;
+  }
+  .modal-content .form-controls {
+    margin-top: 20px;
+  }
+  .modal-body {
+    padding: 23px;
+  }
+  .btn-default {
+    background: $light-gray;
+  }
+  .btn-primary {
+    color: $white;
+  }
+  .app-HomePage .app-HomePageContent__banner h5 {
+    margin: 12px 12px 10px 12px;
+  }
+  @media (min-width: 992px) {
+    .app-ResourceCard {
+      height: 252px;
+    }
+    .app-ResourceCard__image-link {
+      min-width: 250px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .app-SearchControlsContainer .container {
+      width: 820px;
+    }
+    .container {
+      width: 1100px;
+    }
+  }
+  @media (max-width: 1200px) {
+    .app-DatePickerControl {
+      max-width: 335px;
+      min-width: 300px;
+    }
+    .app-DatePickerControl .DayPicker-Day {
+      border: 1px solid $white;
+    }
+    .app-SearchPage .app-SearchControlsContainer__content{
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .app-SearchControlsContainer .panel .panel-heading {
+      right: 170px;
+    }
+  }
+  @media (max-width: 991px) {
+    .app-SearchPage .app-SearchControlsContainer {
+      background: $blue-light;
+      border-top: 1px solid #f9bb1b;
+    }
+    .app-SearchPage .btn-primary {
+      background-color: $blue;
+      border-color: $blue;
+    }
+    .app-ResourceCard__info {
+      padding-left: 15px;
+    }
+    .app-SearchBox {
+      border-right: 0px;
+      border-radius: 10px;
+      margin-right:0px;
+    }
+    .app-DatePickerControl {
+      border-radius: 10px 0 0 10px;
+      margin-left: 0;
+      max-width: 100%;
+      min-width: 300px;
+    }
+    .app-ResourceCard .label-danger, .app-ResourceCard .label-success, .app-ResourceCard .label-info {
+      margin-top: -175px;
+    }
+  }
+  @media (max-width: 750px) {
+    .app-SearchControlsContainer .container{
+      width:440px;
+    }
+    .app-DatePickerControl {
+      max-width: 88%;
+    }
+    .app-SearchControlsContainer .btn.btn-link {
+      margin-left: -200px;
+    }
+    .app-SearchControlsContainer .panel .panel-heading {
+      right: 2px;
+      padding: 12px 33px;
+    }
+    h1 {
+    font-size: 64px;
+    font-weight: 800;
+    }
+  }
+
+  @media (max-width: 420px) {
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .app-SearchPage .app-SearchControlsContainer__content {
+      max-width: 350px;
+      margin: 0px 5px;
+    }
+    .lpr-customizations .app-DatePickerControl {
+      max-width: 85%;
+    }
+    .app-DatePickerControl {
+      min-width: 270px;
+    }
+    .app-SearchControlsContainer .btn.btn-link {
+      margin-left:0px;
+      width:100%;
+    }
+    .app-SearchControlsContainer .panel .panel-heading {
+      right:auto;
+      position:relative;
+      width:100%;
+      margin-top:0px;
+    }
+    .app-DatePickerControl {
+      min-width: 270px;
+      width: 85%;
+    }
+    .app-ResourceHeader__content {
+      padding:10px;
+    }
+    .h4 {
+     font-size: 26px;
+    }
+    .app-ResourcePage__content {
+      padding: 0px;
+    }
+    .app-ResourceHeader__buttons button:not(:first-child) {
+      margin-left: 0px;
+      margin-top: 5px;
+    }
+  }
+
+
   // Modals
   // ------
   .modal {

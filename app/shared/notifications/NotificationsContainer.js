@@ -13,6 +13,7 @@ class UnconnectedNotificationsContainer extends Component {
     const translatedNotifications = notifications.map(notification => ({
       ...notification,
       message: notification.message || t(notification.messageId),
+      onClick: notification.link ? () => { window.location.href = notification.link; } : undefined,
     }));
     return (
       <ReactNotifications

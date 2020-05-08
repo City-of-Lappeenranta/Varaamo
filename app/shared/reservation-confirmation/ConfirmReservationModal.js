@@ -53,12 +53,13 @@ class ConfirmReservationModal extends Component {
 
     if (isAdmin) {
       formFields.push('comments');
+      formFields.push('manualPrice');
       formFields.push('reserverName');
       formFields.push('reserverEmailAddress');
       formFields.push('reserverPhoneNumber');
     }
 
-    if (resource.needManualConfirmation && isStaff) {
+    if (isStaff) {
       formFields.push('staffEvent');
     }
 
@@ -188,7 +189,6 @@ class ConfirmReservationModal extends Component {
 
     const termsAndConditions = isAdmin ? '' : getTermsAndConditions(resource);
     const maxReservationPeriod = isAdmin ? null : resource.maxPeriod;
-
     return (
       <Modal
         animation={false}
@@ -213,6 +213,7 @@ class ConfirmReservationModal extends Component {
             initialValues={this.getFormInitialValues()}
             isEditing={isEditing}
             isMakingReservations={isMakingReservations}
+            isManualConfirmation={isPreliminaryReservation}
             maxReservationPeriod={maxReservationPeriod}
             onCancel={this.handleCancel}
             onConfirm={this.onConfirm}

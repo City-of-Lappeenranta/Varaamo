@@ -1,5 +1,6 @@
 import { first, isEmpty, last } from 'lodash';
 import moment from 'moment';
+import ReactGA from 'react-ga';
 import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
@@ -32,6 +33,7 @@ class UnconnectedReservationPage extends Component {
   }
 
   componentDidMount() {
+    ReactGA.pageview(this.props.resource.name);
     const {
       location,
       reservationCreated,

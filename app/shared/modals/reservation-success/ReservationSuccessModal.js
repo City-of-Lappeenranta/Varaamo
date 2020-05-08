@@ -37,10 +37,13 @@ function ReservationSuccessModal({
             t('ReservationSuccessModal.regularReservationTitle')
           }
         </Modal.Title>
-        <ReservationDate
-          beginDate={reservation.begin}
-          endDate={reservation.end}
-        />
+        {reservationsToShow.map((reservationToShow, i) =>
+          <ReservationDate
+            beginDate={reservationToShow.begin}
+            endDate={reservationToShow.end}
+            key={i}
+          />
+        )}
       </Modal.Header>
       <Modal.Body>
         <div className="reservation-success-modal__content">

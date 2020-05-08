@@ -64,6 +64,8 @@ class Html extends Component {
           <meta charSet="utf-8" />
           <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
           <meta content="width=device-width, initial-scale=1" name="viewport" />
+          <meta name="description" content="Lappeenrannan kaupungin Varaamo -palvelusta voit varata käyttöösi julkisia tiloja ja laitteita - pitää näyttelyn, kokouksen, varata liikuntatilan ym. Tutustu ja varaa!" />
+          <meta name="keywords" content="Varaamo" />
           <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
           <link href="https://overpass-30e2.kxcdn.com/overpass.css" rel="stylesheet" />
           {this.renderStylesLink(appCssSrc, isProduction)}

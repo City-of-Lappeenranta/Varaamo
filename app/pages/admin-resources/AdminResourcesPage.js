@@ -1,4 +1,5 @@
 import moment from 'moment';
+import ReactGA from 'react-ga';
 import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
@@ -20,6 +21,7 @@ import ReservationConfirmationContainer from 'shared/reservation-confirmation';
 import recurringReservations from 'state/recurringReservations';
 import adminResourcesPageSelector from './adminResourcesPageSelector';
 
+
 class UnconnectedAdminResourcesPage extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +31,7 @@ class UnconnectedAdminResourcesPage extends Component {
   }
 
   componentDidMount() {
+    ReactGA.pageview('Oma tilat');
     const interval = 10 * 60 * 1000;
     this.fetchResources();
     this.updateResourcesTimer = window.setInterval(this.fetchResources, interval);

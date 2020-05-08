@@ -46,7 +46,7 @@ function ResourceInfo({ isLoggedIn, resource, unit, t }) {
               }
               {unit && unit.wwwUrl &&
                 <span className="app-ResourceInfo__www">
-                  <a href={unit.wwwUrl}>{unit.wwwUrl}</a>
+                  <a href={unit.wwwUrl} target="new">{unit.wwwUrl}</a>
                 </span>
               }
             </Col>

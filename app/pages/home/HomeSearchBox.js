@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ReactGA from 'react-ga';
 import Button from 'react-bootstrap/lib/Button';
 import FormControl from 'react-bootstrap/lib/FormControl';
 
@@ -25,6 +26,11 @@ class HomeSearchBox extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const text = 'Haku: ';
+    ReactGA.event({
+      category: 'Click search on front page',
+      action: text + this.state.value,
+    });
     this.props.onSearch(this.state.value);
   }
 
@@ -36,15 +42,15 @@ class HomeSearchBox extends React.Component {
           className="app-HomeSearchBox__textfield"
           onChange={this.handleChange}
           placeholder={t('HomeSearchBox.searchPlaceholder')}
+          title={t('HomeSearchBox.searchPlaceholder')}
           type="text"
         />
         <Button
           bsStyle="primary"
           className="app-HomeSearchBox__button"
+          title={t('HomePage.buttonText')}
           type="submit"
-        >
-          {t('HomeSearchBox.buttonText')}
-        </Button>
+        />
       </form>
     );
   }

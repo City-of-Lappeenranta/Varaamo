@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactGA from 'react-ga';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -15,6 +16,7 @@ import userReservationsPageSelector from './userReservationsPageSelector';
 import AdminReservationFilters from './reservation-filters/AdminReservationFilters';
 import ReservationList from './reservation-list';
 
+
 class UnconnectedUserReservationsPage extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,7 @@ class UnconnectedUserReservationsPage extends Component {
   }
 
   componentDidMount() {
+    ReactGA.pageview('Oma varaukset');
     this.adminReservationsLoaded = false;
     if (this.props.isAdmin) {
       this.props.actions.fetchReservations({ canApprove: true });

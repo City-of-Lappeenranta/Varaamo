@@ -24,7 +24,7 @@ function MainNavbar(props) {
       <Navbar.Header>
         <Navbar.Toggle />
         <Navbar.Brand>
-          <Link to="/">
+          <Link title="Varaamo" to="/">
             Varaamo
           </Link>
         </Navbar.Brand>
@@ -32,30 +32,33 @@ function MainNavbar(props) {
       <Navbar.Collapse>
         <Nav activeKey={activeLink}>
           <LinkContainer to={getSearchPageUrl()}>
-            <NavItem eventKey="search" onClick={clearSearchResults}>
+            <NavItem eventKey="search" onClick={clearSearchResults} title={t('Navbar.search')}>
               {t('Navbar.search')}
             </NavItem>
           </LinkContainer>
           {isLoggedIn && (
             <LinkContainer to="/admin-resources">
-              <NavItem eventKey="admin-resources">
+              <NavItem eventKey="admin-resources" title={isAdmin ? t('Navbar.adminResources') : t('Navbar.userFavorites')}>
                 { isAdmin ? t('Navbar.adminResources') : t('Navbar.userFavorites') }
               </NavItem>
             </LinkContainer>
           )}
           {isLoggedIn && (
             <LinkContainer to="/my-reservations">
-              <NavItem eventKey="my-reservations">
+              <NavItem eventKey="my-reservations" title={t('Navbar.userResources')}>
                 {t('Navbar.userResources')}
               </NavItem>
             </LinkContainer>
           )}
           <NavDropdown eventKey={3} id="basic-nav-dropdown" title={t('Navbar.aboutLink')} >
-            <MenuItem eventKey={3.1} href="https://drive.google.com/file/d/1PT_abLmfH84mFp_3NuYj03ngBYDieI2S" target="_blank"> {t('Navbar.serviceInfo')} </MenuItem>
-            <MenuItem eventKey={3.2} href="https://drive.google.com/file/d/1iYLpAPQYPRqGoxo8JXs-ds-c8-7jd9p-" target="_blank"> {t('Navbar.presentation')} </MenuItem>
+            <MenuItem eventKey={3.1} href="https://varaamo.lappeenranta.fi/_assets/Tietoa%20Varaamo-palvelusta%2020190528.pdf" target="_blank" title={t('Navbar.serviceInfo')}> {t('Navbar.serviceInfo')} </MenuItem>
+            <MenuItem eventKey={3.2} href="https://varaamo.lappeenranta.fi/_assets/Varaamo-tilavarauspalvelun%20esittely%2020190528.pdf" target="_blank" title={t('Navbar.presentation')}> {t('Navbar.presentation')} </MenuItem>
+            <MenuItem eventKey={3.3} href="https://varaamo.lappeenranta.fi/_assets/PALVELUN%20KÄYTTÖSOPIMUS%2020190528.pdf" target="_blank" title={t('Navbar.agreement')}> {t('Navbar.agreement')} </MenuItem>
+            <MenuItem eventKey={3.4} href="https://varaamo.lappeenranta.fi/_assets/Varaamon%20varausten%20peruutussäännöt%2020190528.pdf" target="_blank" title={t('Navbar.cancellation')}> {t('Navbar.cancellation')} </MenuItem>
+            <MenuItem eventKey={3.5} href="https://varaamo.lappeenranta.fi/_assets/20190927%20Saavutettavuusseloste%20Varaamo.htm" target="_blank" title={t('Navbar.accessibility')}> {t('Navbar.accessibility')} </MenuItem>
           </NavDropdown>
           <li role="presentation">
-            <a action="push" href="https://drive.google.com/open?id=1w7vuyYuB7KDJcAuEicH3jb7oOW4NcLdI" rel="noopener noreferrer" target="_blank"> {t('Navbar.privacy')} </a>
+            <a action="push" href="https://varaamo.lappeenranta.fi/_assets/Varaamo%20LPR%20Tietosuojaseloste%2020181129.pdf" rel="noopener noreferrer" target="_blank" title={t('Navbar.privacy')}> {t('Navbar.privacy')} </a>
           </li>
         </Nav>
       </Navbar.Collapse>

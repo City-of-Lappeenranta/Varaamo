@@ -143,6 +143,7 @@ class UnconnectedReservationEditForm extends Component {
           {this.renderUserInfoRow('email', 'userEmail')}
         </Well>
         {this.renderEditableInfoRow('eventSubject', 'text')}
+        {isStaff && this.renderEditableInfoRow('manualPrice', 'number')}
         {this.renderStaticInfoRow('reserverName')}
         {this.renderEditableInfoRow('eventDescription', 'textarea')}
         {this.renderEditableInfoRow('numberOfParticipants', 'number')}
