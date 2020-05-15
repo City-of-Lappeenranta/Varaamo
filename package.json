@@ -28,7 +28,7 @@
     "json-loader": "0.5.4",
     "leaflet": "1.0.3",
     "location-origin": "1.1.4",
-    "lodash": "4.16.4",
+    "lodash": "4.17.13",
     "mobile-detect": "1.4.0",
     "moment": "2.15.1",
     "moment-range": "2.2.0",
@@ -74,7 +74,7 @@
     "redux-thunk": "2.2.0",
     "reselect": "2.5.4",
     "seamless-immutable": "6.1.4",
-    "serialize-javascript": "1.3.0",
+    "serialize-javascript": "2.1.1",
     "validator": "6.1.0"
   },
   "devDependencies": {
@@ -92,7 +92,7 @@
     "babel-preset-stage-2": "6.17.0",
     "body-parser": "1.15.2",
     "chai": "3.5.0",
-    "codecov": "2.3.0",
+    "codecov": "3.6.5",
     "cookie-parser": "1.4.3",
     "cookie-session": "1.2.0",
     "css-loader": "0.25.0",
