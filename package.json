@@ -28,7 +28,7 @@
     "json-loader": "0.5.4",
     "leaflet": "1.0.3",
     "location-origin": "1.1.4",
-    "lodash": "4.17.13",
+    "lodash": "4.17.19",
     "mobile-detect": "1.4.0",
     "moment": "2.15.1",
     "moment-range": "2.2.0",
