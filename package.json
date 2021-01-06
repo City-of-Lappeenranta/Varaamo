@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@exlinc/keycloak-passport": "1.0.2",
-    "axios": "0.18.0",
+    "axios": "0.21.1",
     "bootstrap-sass": "3.3.7",
     "classnames": "2.2.5",
     "dotenv": "2.0.0",
