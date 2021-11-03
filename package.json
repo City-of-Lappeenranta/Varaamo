@@ -75,7 +75,7 @@
     "reselect": "2.5.4",
     "seamless-immutable": "6.1.4",
     "serialize-javascript": "2.1.1",
-    "validator": "6.1.0"
+    "validator": "13.7.0"
   },
   "devDependencies": {
     "autoprefixer": "6.5.1",
